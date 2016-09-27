@@ -89,7 +89,7 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">Last edited: 2016-09-26 14:54</p>
+            <p style="margin-top: 6px; margin-left: -2px;">Last edited: 2016-09-26 21:12</p>
           </hgroup>
   </slide>
 
@@ -126,23 +126,57 @@ x &amp; 0 &lt; x &lt; 1\\
 
 <p>and \(F(x)\) is <em>right-continuous</em>, i.e. \[\lim_{x \to a+} F(x) = F(a).\]</p>
 
-<p>The proof of this theorem uses The Continuity Theorem and its corollary. I&#39;ll do the middle property (see next slide for an extra detail). The other two are left for you.</p>
+<p>The proof of this theorem uses The Continuity Theorem and its corollary. I&#39;ll do the middle property (see next <em>three</em> (new!) slides for an extra detail). The other two are left for you.</p>
 
 <p>(advanced note: <em>any</em> function with these properties is a cdf for some \(X\). )</p>
 
-</article></slide><slide class=''><hgroup><h2>note &#8212; a sequence definition of function limit</h2></hgroup><article  id="note-----a-sequence-definition-of-function-limit">
+</article></slide><slide class=''><hgroup><h2>notes &#8212; limits at infinity, and right-continuity (Part I)</h2></hgroup><article  id="notes-----limits-at-infinity-and-right-continuity-part-i" class="small">
 
-<p>There is the general notion of limit: \(\lim_{x\to a} f(a) = L\).</p>
+<p>There is the general definition of function limit, and function continuity. Here are some useful facts.</p>
 
-<p>Also, a function \(f\) has a left-hand limit \(L^-\) at \(a\) (notation: \(\lim_{x \to a-} f(x) = L^-\)) if:</p>
+<p>One can establish:</p>
 
-<p>\[\lim_{n\to\infty} f(x_n) = L^- \text{ for all non-decreasing sequences } x_n \nearrow a\]</p>
+<p>\[\lim_{x\to\infty} f(x) = L\]</p>
 
-<p>Also, a function \(f\) has a right-hand limit \(L^+\) at \(a\) (notation: \(\lim_{x \to a+} f(x) = L^+\)) if:</p>
+<p>by showing that \(\lim_{n\to\infty} f(x_n) = L\) for <em>any</em> sequence \(x_1 \le x_2 \le x_3 \le \cdots\) that goes to \(\infty\).</p>
 
-<p>\[\lim_{n\to\infty} f(x_n) = L^+ \text{ for all non-increasing sequences } x_n \searrow a\]</p>
+</article></slide><slide class=''><hgroup><h2>notes &#8212; limits at infinity, and right-continuity (Part II)</h2></hgroup><article  id="notes-----limits-at-infinity-and-right-continuity-part-ii" class="small">
 
-<p>Fact: If \(L^- = L^+ = L\), then \(\lim_{x\to a} f(x) = L\).</p>
+<p>One can also establish:</p>
+
+<p>\[\lim_{x\to -\infty} f(x) = L\]</p>
+
+<p>by showing that \(\lim_{n\to\infty} f(x_n) = L\) for <em>any</em> sequence \(x_1 \ge x_2 \ge x_3 \ge \cdots\) that goes to \(-\infty\).</p>
+
+</article></slide><slide class=''><hgroup><h2>notes &#8212; limits at infinity, and right-continuity (Part III)</h2></hgroup><article  id="notes-----limits-at-infinity-and-right-continuity-part-iii" class="small">
+
+<p>Finally, one can establish that a function is <em>right-continuous at</em> \(a\) by showing that</p>
+
+<p>\[\lim_{n\to\infty} f(x_n) = f(a)\]</p>
+
+<p>for <em>any</em> non-increasing sequence \(x_1 \ge x_2 \ge x_3 \ge \cdots\) that converges to \(a\).</p>
+
+</article></slide><slide class=''><hgroup><h2>not done \(properly\) in class - the proof of the middle property (part I)</h2></hgroup><article  id="not-done-properly-in-class---the-proof-of-the-middle-property-part-i" class="small">
+
+<p>First, note that I <em>changed</em> what used to be the previous <em>one</em> slide into <em>three</em> slides with more explicitly useful information that is needed to prove all three of the cdf properties.</p>
+
+<p>Theorem: If \(F\) is a cdf, \(\lim_{x\to\infty} F(x) = 1\).</p>
+
+<p>Proof: First, see previous slides for a way to prove a &quot;limit at infinity&quot;. (My first regret in class was not using this more specific result, and trying to be casual with the whole thing.)</p>
+
+<p>Let \(x_1 \le x_2 \le x_3 \le \cdots\) be any unbounded non-decreasing sequence, so that it converges to \(+\infty\).</p>
+
+<p>Define the <em>events</em> \(A_i = \{X \le x_i\}\) (my second regret was not carefully enough defining actual increasing sequence of events of interest.).</p>
+
+</article></slide><slide class=''><hgroup><h2>not done \(properly\) in class - the proof of the middle property (part II)</h2></hgroup><article  id="not-done-properly-in-class---the-proof-of-the-middle-property-part-ii" class="small">
+
+<p>Then \(A_i \subset A_{i+1}\) and \(\cup_{i=1}^\infty A_i\) is just the event \(\{X \in \mathbb{R}\}\), which we can call \(A\). (OK think informally that \(A = \{ -\infty &lt; X &lt; \infty \}\).</p>
+
+<p>So by <em>The Continuity Theorem</em> we have \(\lim_{n\to\infty} P(A_n) = P(A)\). But \(P(A)=1\), since \(X\) has to take on <em>some</em> value. And \(P(A_n) = P(X \le x_n) = F(x_n)\) by construction of \(A_n\) and the definition of \(F\). So \(\lim_{n\to\infty}F(x_n) = 1\).</p>
+
+<p>Since all this is true no matter what unbounded non-decreasing sequence we had started with we conclude:</p>
+
+<p>\[\lim_{x\to\infty}F(x) = 1.\]</p>
 
 </article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>discrete random variables</h2></hgroup><article  id="discrete-random-variables">
 
@@ -172,7 +206,11 @@ x &amp; 0 &lt; x &lt; 1\\
 
 <p>Theorem: for any discrete random variable \(X\), the pmf and the cdf can be derived from each other.</p>
 
-<p>Proof: (surprisingly fussy!)</p>
+<p>Proof: Surprisingly fussy, so don&#39;t worry about it. The pmf to cdf direction is easy:</p>
+
+<p>\[F(x) \sum_{y \le x} p(x)\]</p>
+
+<p>The other direction isn&#39;t so easy. The idea (more important than the proof) is that you can recover the pmf from the cdf by noting that \(X\) takes on values exactly where the cdf jumps, and the sizes of those jumps are exactly the required probabilities.</p>
 
 </article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>some important discrete random variables with special named distributions</h2></hgroup><article  id="some-important-discrete-random-variables-with-special-named-distributions">
 
@@ -184,7 +222,7 @@ x &amp; 0 &lt; x &lt; 1\\
 
 <p>\[X \sim \text{Bernoulli}(p)\]</p>
 
-</article></slide><slide class=''><hgroup><h2>&quot;indentically distributed&quot;</h2></hgroup><article  id="indentically-distributed" class="build">
+</article></slide><slide class=''><hgroup><h2>&quot;identically distributed&quot;</h2></hgroup><article  id="identically-distributed" class="build">
 
 <p>It doesn&#39;t really matter what the underlying sample space \(S\) actually is:</p>
 
@@ -201,11 +239,11 @@ x &amp; 0 &lt; x &lt; 1\\
 
 <p>\[p(x) = \begin{cases}
 1-p &amp; : &amp; x = 0,\\
-p &amp; : &amp; x = 1\end{cases} \quad = \quad p^x(1-p)^x \text{ for } x \in \{0, 1\}\]</p>
+p &amp; : &amp; x = 1\end{cases} \quad = \quad p^x(1-p)^{1-x} \text{ for } x \in \{0, 1\}\]</p>
 
 <p>\[F(x) = P(X \le x) = \begin{cases}
 0 &amp; : &amp; x &lt; 0,\\
-p &amp; : &amp; 0 \le x &lt; 1\\
+1-p &amp; : &amp; 0 \le x &lt; 1\\
 1 &amp; : &amp; x \ge 1\end{cases}\]</p>
 
 <p>Often used as a model for an &quot;experiment&quot; or other random process that either produces an event \(A\) of interest, or it doesn&#39;t. If \(A\) is some event we can define the useful <em>indicator function</em>:</p>
@@ -214,13 +252,13 @@ p &amp; : &amp; 0 \le x &lt; 1\\
 1 &amp; \text{ when $A$ occurs}\\
 0 &amp; \text{ otherwise}\end{cases}\]</p>
 
-<p>\(I_A\) will have a Bernouilli distribution with parameter \(p = P(A)\).</p>
+<p>\(I_A\) is a random variable. It will have a Bernouilli distribution with parameter \(p = P(A)\).</p>
 
 </article></slide><slide class=''><hgroup><h2>thank you for subscribing to Bernoulli facts!</h2></hgroup><article  id="thank-you-for-subscribing-to-bernoulli-facts" class="small">
 
 <p>Sometimes we&#39;ll say \(q\) instead of \(1-p\).</p>
 
-<p>It&#39;s not clear why the outcomes 0 and 1 are important and useful. Why not just focus on the underlying random outcome?</p>
+<p>It&#39;s not clear why the outcomes 0 and 1 are important and useful. Why not just focus on the underlying random outcome? More later.</p>
 
 <p>It starts with the idea of <em>Bernoulli process</em>, which I&#39;ll introduce now but cannot completely describe until later.</p>
 

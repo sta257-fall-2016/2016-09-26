@@ -43,23 +43,59 @@ $$\lim_{x \to \infty} F(x) = 1,$$
 
 and $F(x)$ is *right-continuous*, i.e. $$\lim_{x \to a+} F(x) = F(a).$$
 
-The proof of this theorem uses The Continuity Theorem and its corollary. I'll do the middle property (see next slide for an extra detail). The other two are left for you.
+The proof of this theorem uses The Continuity Theorem and its corollary. I'll do the middle property (see next *three* (new!) slides for an extra detail). The other two are left for you.
 
 (advanced note: *any* function with these properties is a cdf for some $X$. )
 
-## note --- a sequence definition of function limit
+## notes --- limits at infinity, and right-continuity (Part I) { .small }
 
-There is the general notion of limit: $\lim_{x\to a} f(a) = L$.
+There is the general definition of function limit, and function continuity. Here are some useful facts.
 
-Also, a function $f$ has a left-hand limit $L^-$ at $a$ (notation: $\lim_{x \to a-} f(x) = L^-$) if:
+One can establish:
 
-$$\lim_{n\to\infty} f(x_n) = L^- \text{ for all non-decreasing sequences } x_n \nearrow a$$
+$$\lim_{x\to\infty} f(x) = L$$
 
-Also, a function $f$ has a right-hand limit $L^+$ at $a$ (notation: $\lim_{x \to a+} f(x) = L^+$) if:
+by showing that $\lim_{n\to\infty} f(x_n) = L$ for *any* sequence $x_1 \le x_2 \le x_3 \le \cdots$ that goes to $\infty$. 
 
-$$\lim_{n\to\infty} f(x_n) = L^+ \text{ for all non-increasing sequences } x_n \searrow a$$
+## notes --- limits at infinity, and right-continuity (Part II) { .small }
 
-Fact: If $L^- = L^+ = L$, then $\lim_{x\to a} f(x) = L$.
+
+One can also establish:
+
+$$\lim_{x\to -\infty} f(x) = L$$
+
+by showing that $\lim_{n\to\infty} f(x_n) = L$ for *any* sequence $x_1 \ge x_2 \ge x_3 \ge \cdots$ that goes to $-\infty$. 
+
+## notes --- limits at infinity, and right-continuity (Part III) { .small }
+
+Finally, one can establish that a function is *right-continuous at* $a$ by showing that
+
+$$\lim_{n\to\infty} f(x_n) = f(a)$$ 
+
+for *any* non-increasing sequence $x_1 \ge x_2 \ge x_3 \ge \cdots$ that converges to $a$. 
+
+
+## not done $properly$ in class - the proof of the middle property (part I) { .small }
+
+First, note that I *changed* what used to be the previous *one* slide into *three* slides with more explicitly useful information that is needed to prove all three of the cdf properties.
+
+Theorem: If $F$ is a cdf, $\lim_{x\to\infty} F(x) = 1$.
+
+Proof: First, see previous slides for a way to prove a "limit at infinity". (My first regret in class was not using this more specific result, and trying to be casual with the whole thing.)
+
+Let $x_1 \le x_2 \le x_3 \le \cdots$ be any unbounded non-decreasing sequence, so that it converges to $+\infty$. 
+
+Define the *events* $A_i = \{X \le x_i\}$ (my second regret was not carefully enough defining actual increasing sequence of events of interest.). 
+
+## not done $properly$ in class - the proof of the middle property (part II) { .small }
+
+Then $A_i \subset A_{i+1}$ and $\cup_{i=1}^\infty A_i$ is just the event $\{X \in \mathbb{R}\}$, which we can call $A$. (OK think informally that $A = \{ -\infty < X < \infty \}$.
+
+So by *The Continuity Theorem* we have $\lim_{n\to\infty} P(A_n) = P(A)$. But $P(A)=1$, since $X$ has to take on *some* value. And $P(A_n) = P(X \le x_n) = F(x_n)$ by construction of $A_n$ and the definition of $F$. So $\lim_{n\to\infty}F(x_n) = 1$. 
+
+Since all this is true no matter what unbounded non-decreasing sequence we had started with we conclude:
+
+$$\lim_{x\to\infty}F(x) = 1.$$
 
 # discrete random variables
 
@@ -89,7 +125,11 @@ $$\sum_{\{x\,:\,p(x) > 0\}} p(x) = 1$$
 
 Theorem: for any discrete random variable $X$, the pmf and the cdf can be derived from each other.
 
-Proof: (surprisingly fussy!)
+Proof: Surprisingly fussy, so don't worry about it. The pmf to cdf direction is easy:
+
+$$F(x) \sum_{y \le x} p(x)$$
+
+The other direction isn't so easy. The idea (more important than the proof) is that you can recover the pmf from the cdf by noting that $X$ takes on values exactly where the cdf jumps, and the sizes of those jumps are exactly the required probabilities. 
 
 # some important discrete random variables with special named distributions
 
@@ -101,7 +141,7 @@ The phrase "$X$ has a Bernoulli distribution with parameter $p$" will be abbrevi
 
 $$X \sim \text{Bernoulli}(p)$$
 
-## "indentically distributed" { .build }
+## "identically distributed" { .build }
 
 It doesn't really matter what the underlying sample space $S$ actually is:
 
@@ -117,11 +157,11 @@ We say $X_1$ and $X_2$ are "identically distributed", and therefore the same as 
 
 $$p(x) = \begin{cases}
 1-p & : & x = 0,\\
-p & : & x = 1\end{cases} \quad = \quad p^x(1-p)^x \text{ for } x \in \{0, 1\}$$
+p & : & x = 1\end{cases} \quad = \quad p^x(1-p)^{1-x} \text{ for } x \in \{0, 1\}$$
 
 $$F(x) = P(X \le x) = \begin{cases}
 0 & : & x < 0,\\
-p & : & 0 \le x < 1\\
+1-p & : & 0 \le x < 1\\
 1 & : & x \ge 1\end{cases}$$
 
 Often used as a model for an "experiment" or other random process that either produces an event $A$ of interest, or it doesn't. If $A$ is some event we can define the useful *indicator function*:
@@ -130,13 +170,13 @@ $$I_A = \begin{cases}
 1 & \text{ when $A$ occurs}\\
 0 & \text{ otherwise}\end{cases}$$
 
-$I_A$ will have a Bernouilli distribution with parameter $p = P(A)$.
+$I_A$ is a random variable. It will have a Bernouilli distribution with parameter $p = P(A)$.
 
 ## thank you for subscribing to Bernoulli facts! { .small }
 
 Sometimes we'll say $q$ instead of $1-p$. 
 
-It's not clear why the outcomes 0 and 1 are important and useful. Why not just focus on the underlying random outcome?
+It's not clear why the outcomes 0 and 1 are important and useful. Why not just focus on the underlying random outcome? More later.
 
 It starts with the idea of *Bernoulli process*, which I'll introduce now but cannot completely describe until later.
 
